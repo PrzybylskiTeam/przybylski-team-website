@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Przybylski Team | Agresti Real Estate</title>
+  <meta name="description" content="Alexis & Nate Przybylski, REALTORS® with Agresti Real Estate, serving Erie County buyers and sellers." />
+  <style>
+    :root {
+      --navy: #1f2b5c;
+      --navy-dark: #141c42;
+      --burgundy: #7a1f2b;
+      --burgundy-dark: #5d1620;
+      --gold: #f2c319;
+      --white: #ffffff;
+      --soft: #f5f7fb;
+      --text: #1d2433;
+      --muted: #647084;
+      --border: #dfe5f1;
+      --shadow: 0 18px 40px rgba(20, 28, 66, 0.16);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--soft);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top-bar {
+      background: var(--navy-dark);
+      color: var(--white);
+      font-size: 14px;
+      padding: 9px 5%;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 58%, var(--burgundy-dark) 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "PRZYBYLSKI TEAM";
+      position: absolute;
+      inset: auto -80px 25px auto;
+      font-size: clamp(42px, 10vw, 130px);
+      font-weight: 900;
+      letter-spacing: 7px;
+      color: rgba(255, 255, 255, 0.045);
+      transform: rotate(-10deg);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    nav {
+      padding: 22px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--gold);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: var(--gold);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,0.78);
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.92);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .hero {
+      padding: 55px 5% 85px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 38px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.02;
+      margin: 0 0 20px;
+      letter-spacing: -1.6px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: rgba(255,255,255,0.88);
+      margin: 0 0 28px;
+      max-width: 740px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .btn-white {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .btn-burgundy {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .photo-placeholder {
+      min-height: 350px;
+      border-radius: 18px;
+      border: 3px solid var(--gold);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.01) 10px, rgba(255,255,255,0.01) 20px);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 26px;
+      color: rgba(255,255,255,0.86);
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 76px 5%;
+    }
+
+    .section.white {
+      background: var(--white);
+    }
+
+    .section.navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .section-title {
+      max-width: 850px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-title .eyebrow {
+      color: var(--burgundy);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .section.navy .section-title .eyebrow {
+      color: var(--gold);
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .section.navy .section-title p {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(20, 28, 66, 0.08);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      color: var(--navy-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .review-box {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--white);
+      color: var(--text);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border-top: 7px solid var(--gold);
+    }
+
+    .review-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .review-btn {
+      border-radius: 18px;
+      padding: 18px 16px;
+      color: var(--white);
+      font-weight: 900;
+      text-align: center;
+      background: var(--navy);
+    }
+
+    .review-btn:nth-child(2) {
+      background: var(--burgundy);
+    }
+
+    .review-btn:nth-child(3) {
+      background: var(--navy-dark);
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .listing {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(20, 28, 66, 0.08);
+    }
+
+    .listing-image {
+      height: 190px;
+      background:
+        linear-gradient(135deg, rgba(31,43,92,0.76), rgba(122,31,43,0.58)),
+        repeating-linear-gradient(45deg, #e7ecf6, #e7ecf6 10px, #d9e1ee 10px, #d9e1ee 20px);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      font-weight: 900;
+    }
+
+    .listing-body {
+      padding: 22px;
+    }
+
+    .status {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--navy-dark);
+      background: var(--gold);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status.pending {
+      color: var(--white);
+      background: var(--burgundy);
+    }
+
+    .status.sold {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .listing h3 {
+      margin: 0 0 7px;
+      color: var(--navy-dark);
+      font-size: 20px;
+    }
+
+    .price {
+      color: var(--burgundy);
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .details {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .small-link {
+      display: inline-flex;
+      color: var(--navy);
+      font-weight: 900;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .contact-wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border-left: 7px solid var(--gold);
+    }
+
+    .contact-card h3 {
+      color: var(--navy-dark);
+      margin-top: 0;
+      font-size: 26px;
+    }
+
+    .contact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-list strong {
+      color: var(--navy);
+    }
+
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.82);
+      padding: 34px 5%;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--white);
+    }
+
+    .legal {
+      max-width: 980px;
+      margin: 16px auto 0;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+    }
+
+    .edit-note {
+      background: #fff8d7;
+      border: 1px solid #f0d46b;
+      color: #4d3f00;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .listings-grid,
+      .review-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .photo-placeholder {
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CONTACT BAR -->
+  <div class="top-bar">
+    <div>Alexis & Nate Przybylski, REALTORS® | Agresti Real Estate</div>
+    <div>
+      <a href="tel:8144823344">Call or Text: 814.482.3344</a> &nbsp; | &nbsp;
+      <a href="mailto:PrzybylskiTeam@TryAgresti.com">PrzybylskiTeam@TryAgresti.com</a>
+    </div>
+  </div>
+
+  <!-- HEADER / HERO -->
+  <header id="home">
+    <nav>
+      <a class="brand" href="#home" aria-label="Przybylski Team Home">
+        <div class="brand-mark">PT</div>
+        <div>
+          <div class="brand-title">Przybylski Team</div>
+          <div class="brand-subtitle">Agresti Real Estate</div>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#reviews">Reviews</a>
+        <a href="#current-listings">Listings</a>
+        <a href="#pending-sold">Pending & Sold</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="kicker">ERIE COUNTY REAL ESTATE</div>
+        <h1>Helping Buyers & Sellers Move With Confidence</h1>
+        <p>
+          Local real estate guidance from Alexis & Nate Przybylski with Agresti Real Estate.
+          Clear communication, strong local knowledge, and a hands-on approach from the first
+          conversation to the closing table.
+        </p>
+
+        <div class="button-row">
+          <a class="btn btn-gold" href="#current-listings">View Current Listings</a>
+          <a class="btn btn-white" href="#reviews">Leave a Review</a>
+          <a class="btn btn-white" href="#contact">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <!-- Replace this placeholder with your professional photo if your website builder allows it. -->
+        <div class="photo-placeholder">
+          PLACE YOUR TEAM PHOTO HERE<br />
+          Alexis & Nate Przybylski<br />
+          REALTOR®
+        </div>
+        <div class="edit-note">
+          Replace this box with your headshot/team photo. Use the photo from your business card or a cleaner high-resolution version.
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <!-- TRUST SECTION -->
+  <section class="section white">
+    <div class="section-title">
+      <div class="eyebrow">Why Work With Us</div>
+      <h2>Real Estate Help That Feels Personal, Not Generic</h2>
+      <p>We help clients understand the process, stay organized, and make confident decisions in the Erie County market.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">1</div>
+        <h3>Local Erie County Focus</h3>
+        <p>We understand the local neighborhoods, pricing trends, buyer expectations, and market conditions that matter in Erie County and the surrounding area.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">2</div>
+        <h3>Clear Communication</h3>
+        <p>You deserve updates, answers, and guidance throughout the process. We focus on keeping clients informed so they are never left guessing.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">3</div>
+        <h3>Buyer & Seller Support</h3>
+        <p>From preparing a listing to writing an offer, reviewing timelines, coordinating showings, and getting to closing, we help clients understand each step.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="section navy" id="reviews">
+    <div class="section-title">
+      <div class="eyebrow">Client Reviews</div>
+      <h2>Share Your Experience With the Przybylski Team</h2>
+      <p>Thank you for trusting us with your real estate journey. Your feedback helps future buyers and sellers feel more confident choosing the right agents.</p>
+    </div>
+
+    <div class="review-box">
+      <h3 style="margin-top: 0; color: var(--navy-dark); font-size: 28px;">Had a great experience?</h3>
+      <p>
+        If we helped you through the buying or selling process, we would be grateful if you took a moment to leave a review.
+        Reviews make a real difference for local clients who are deciding who to trust with one of the biggest decisions of their lives.
+      </p>
+      <p><strong>Please choose whichever platform is easiest for you below.</strong></p>
+
+      <div class="review-buttons">
+        <a class="review-btn" href="PASTE_GOOGLE_REVIEW_LINK_HERE" target="_blank" rel="noopener">Leave a Google Review</a>
+        <a class="review-btn" href="PASTE_ZILLOW_REVIEW_LINK_HERE" target="_blank" rel="noopener">Leave a Zillow Review</a>
+        <a class="review-btn" href="PASTE_FACEBOOK_REVIEW_LINK_HERE" target="_blank" rel="noopener">Leave a Facebook Recommendation</a>
+      </div>
+
+      <div class="edit-note">
+        Replace the three review links above with your real Google, Zillow, and Facebook review links.
+      </div>
+
+      <p style="font-size: 13px; color: var(--muted); margin-top: 18px;">
+        Reviews are voluntary and should reflect your honest experience. No review is required or expected in exchange for real estate services.
+      </p>
+    </div>
+  </section>
+
+  <!-- CURRENT LISTINGS -->
+  <section class="section white" id="current-listings">
+    <div class="section-title">
+      <div class="eyebrow">For Sale</div>
+      <h2>Current Listings</h2>
+      <p>Explore homes and properties currently listed by Alexis & Nate Przybylski with Agresti Real Estate.</p>
+    </div>
+
+    <div class="listings-grid">
+      <!-- COPY THIS LISTING CARD FOR MORE ACTIVE LISTINGS -->
+      <article class="listing">
+        <div class="listing-image">PLACE LISTING PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status">Active</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[PRICE]</div>
+          <div class="details">[BEDS] Beds • [BATHS] Baths • [SQ FT] Sq Ft • MLS #[MLS NUMBER]</div>
+          <p>[Short listing description goes here. Keep this to 2-4 sentences for the preview card.]</p>
+          <a class="small-link" href="PASTE_LISTING_LINK_HERE" target="_blank" rel="noopener">View Full Listing</a>
+        </div>
+      </article>
+
+      <article class="listing">
+        <div class="listing-image">PLACE LISTING PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status">Active</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[PRICE]</div>
+          <div class="details">[BEDS] Beds • [BATHS] Baths • [SQ FT] Sq Ft • MLS #[MLS NUMBER]</div>
+          <p>[Short listing description goes here. Keep this to 2-4 sentences for the preview card.]</p>
+          <a class="small-link" href="PASTE_LISTING_LINK_HERE" target="_blank" rel="noopener">View Full Listing</a>
+        </div>
+      </article>
+
+      <article class="listing">
+        <div class="listing-image">PLACE LISTING PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status">Active</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[PRICE]</div>
+          <div class="details">[BEDS] Beds • [BATHS] Baths • [SQ FT] Sq Ft • MLS #[MLS NUMBER]</div>
+          <p>[Short listing description goes here. Keep this to 2-4 sentences for the preview card.]</p>
+          <a class="small-link" href="PASTE_LISTING_LINK_HERE" target="_blank" rel="noopener">View Full Listing</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PENDING AND SOLD -->
+  <section class="section" id="pending-sold">
+    <div class="section-title">
+      <div class="eyebrow">Market Activity</div>
+      <h2>Pending & Recently Sold</h2>
+      <p>A look at properties we have helped move through the market.</p>
+    </div>
+
+    <div class="listings-grid">
+      <article class="listing">
+        <div class="listing-image">PLACE PROPERTY PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status pending">Pending</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[LIST PRICE]</div>
+          <div class="details">[CITY / AREA] • [PROPERTY TYPE]</div>
+          <p>This property is currently under contract. If you are thinking about selling a similar property, we would be happy to help you understand your options.</p>
+          <a class="small-link" href="#contact">Ask About Your Home Value</a>
+        </div>
+      </article>
+
+      <article class="listing">
+        <div class="listing-image">PLACE PROPERTY PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status sold">Sold</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[SOLD PRICE]</div>
+          <div class="details">[CITY / AREA] • [PROPERTY TYPE]</div>
+          <p>This property has sold. If you are considering selling, we can help you understand how your property compares to recent activity in the local market.</p>
+          <a class="small-link" href="#contact">Request a Home Value Estimate</a>
+        </div>
+      </article>
+
+      <article class="listing">
+        <div class="listing-image">PLACE PROPERTY PHOTO HERE</div>
+        <div class="listing-body">
+          <span class="status sold">Sold</span>
+          <h3>[PROPERTY ADDRESS]</h3>
+          <div class="price">$[SOLD PRICE]</div>
+          <div class="details">[CITY / AREA] • [PROPERTY TYPE]</div>
+          <p>This property has sold. If you are considering selling, we can help you understand how your property compares to recent activity in the local market.</p>
+          <a class="small-link" href="#contact">Request a Home Value Estimate</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section navy">
+    <div class="section-title">
+      <div class="eyebrow">Thinking About Moving?</div>
+      <h2>Let’s Talk Through Your Next Step</h2>
+      <p>Whether you are ready now or just starting to think about buying or selling, we can help you understand your options.</p>
+      <div class="button-row" style="justify-content: center; margin-top: 26px;">
+        <a class="btn btn-gold" href="tel:8144823344">Call or Text Us</a>
+        <a class="btn btn-white" href="mailto:PrzybylskiTeam@TryAgresti.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section white" id="contact">
+    <div class="section-title">
+      <div class="eyebrow">Contact</div>
+      <h2>Contact the Przybylski Team</h2>
+      <p>Have a question about buying, selling, or reviewing your options? Reach out anytime.</p>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <h3>Alexis & Nate Przybylski</h3>
+        <p>
+          Whether you are ready to make a move now or just beginning to think through your next step,
+          we would be happy to talk with you.
+        </p>
+        <ul class="contact-list">
+          <li><strong>Brokerage:</strong> Agresti Real Estate</li>
+          <li><strong>Office:</strong> 2635 West 26th Street, Erie, PA 16506</li>
+          <li><strong>Call or Text:</strong> <a href="tel:8144823344">814.482.3344</a></li>
+          <li><strong>Office Phone:</strong> <a href="tel:8144599400">814.459.9400</a></li>
+          <li><strong>Email:</strong> <a href="mailto:PrzybylskiTeam@TryAgresti.com">PrzybylskiTeam@TryAgresti.com</a></li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <h3>Quick Links</h3>
+        <p>Use these buttons to connect, review, or view listing activity.</p>
+        <div class="button-row">
+          <a class="btn btn-burgundy" href="tel:8144823344">Call or Text</a>
+          <a class="btn btn-gold" href="#reviews">Leave a Review</a>
+          <a class="btn btn-burgundy" href="#current-listings">View Listings</a>
+        </div>
+        <div class="edit-note">
+          Add a contact form here if your website platform allows it.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Alexis & Nate Przybylski, REALTORS®</strong><br />
+    Agresti Real Estate | 2635 West 26th Street, Erie, PA 16506<br />
+    Office: 814.459.9400 | Call or Text: 814.482.3344 | PrzybylskiTeam@TryAgresti.com
+
+    <div class="legal">
+      Reviews are voluntary and should reflect your honest experience. Property information is provided for general marketing purposes and should be verified through the MLS or appropriate listing sources. This website is a marketing page for Alexis & Nate Przybylski, REALTORS®, affiliated with Agresti Real Estate.
+    </div>
+  </footer>
+
+</body>
+</html>
