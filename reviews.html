@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews | Przybylski Team</title>
+  <meta name="description" content="Read and leave reviews for Alexis & Nate Przybylski with Agresti Real Estate." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <div>Alexis Przybylski, REALTOR® | Nate Przybylski, REALTOR® | Agresti Real Estate</div>
+    <div>
+      <a href="tel:8144823344">Call or Text: 814.482.3344</a> &nbsp; | &nbsp;
+      <a href="mailto:PrzybylskiTeam@TryAgresti.com">PrzybylskiTeam@TryAgresti.com</a>
+    </div>
+  </div>
+
+  <header id="home">
+    <nav>
+      <a class="brand" href="index.html" aria-label="Przybylski Team Home">
+        <div class="brand-mark">PT</div>
+        <div>
+          <div class="brand-title">Przybylski Team</div>
+          <div class="brand-subtitle">Agresti Real Estate</div>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="properties.html?status=active">Listings</a>
+        <a href="properties.html?status=pending">Pending</a>
+        <a href="properties.html?status=sold">Sales</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+    <section class="page-hero">
+      <div class="kicker">CLIENT REVIEWS</div>
+      <h1>Reviews From Local Buyers & Sellers</h1>
+      <p>Read client feedback and choose the easiest place to share your own experience with the Przybylski Team.</p>
+      <div class="button-row" style="justify-content:center;">
+        <a class="btn btn-gold" href="PASTE_GOOGLE_REVIEW_LINK_HERE" target="_blank" rel="noopener">Leave a Google Review</a>
+        <a class="btn btn-white" href="PASTE_ZILLOW_REVIEW_LINK_HERE" target="_blank" rel="noopener">Leave a Zillow Review</a>
+        <a class="btn btn-white" href="PASTE_FACEBOOK_REVIEW_LINK_HERE" target="_blank" rel="noopener">Facebook Recommendation</a>
+      </div>
+    </section>
+  </header>
+
+  <section class="section white">
+    <div class="section-title">
+      <div class="eyebrow">What Clients Say</div>
+      <h2>Review Wall</h2>
+      <p>This page displays reviews from the editable <strong>data/reviews.json</strong> file. True automatic Google/Zillow pulling requires their approved API, widget, or a third-party review service.</p>
+    </div>
+    <div class="reviews-list" id="reviews-list"></div>
+
+    <div class="admin-note">
+      Note: Google and Zillow reviews generally cannot be scraped directly into a static GitHub Pages site. The safe setup is to manually add approved review excerpts to data/reviews.json, embed an official widget, or use a paid reviews API/service.
+    </div>
+  </section>
+  <footer>
+    <strong>Alexis & Nate Przybylski, REALTORS®</strong><br />
+    Agresti Real Estate | 2635 West 26th Street, Erie, PA 16506<br />
+    Office: 814.459.9400 | Call or Text: 814.482.3344 | PrzybylskiTeam@TryAgresti.com
+
+    <div class="legal">
+      Reviews are voluntary and should reflect honest client experiences. Property information is provided for general marketing purposes and should be verified through the MLS or appropriate listing sources. This website is a marketing page for Alexis & Nate Przybylski, REALTORS®, affiliated with Agresti Real Estate.
+    </div>
+  </footer>
+  <script src="assets/js/app.js"></script>
+  <script>renderReviewsPage();</script>
+</body>
+</html>
