@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "site_data"
+    label: "Website Data"
+    files:
+      - name: "properties"
+        label: "Properties"
+        file: "data/properties.json"
+        format: "json"
+        fields:
+          - label: "Properties"
+            name: "properties"
+            widget: "list"
+            summary: "{{fields.status}} — {{fields.address}}"
+            fields:
+              - { label: "Property ID", name: "id", widget: "string", hint: "Use lowercase words with dashes, like 123-main-st-erie-pa. This creates the property detail URL." }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Active", value: "active" }
+                  - { label: "Pending", value: "pending" }
+                  - { label: "Sold", value: "sold" }
+              - { label: "Sort Date", name: "sortDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", hint: "Newest dates show first on pages/homepage." }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "City / Area", name: "city", widget: "string", default: "Erie, PA" }
+              - { label: "Price / List Price / Sold Price", name: "price", widget: "string", required: false }
+              - { label: "Beds", name: "beds", widget: "string", required: false }
+              - { label: "Baths", name: "baths", widget: "string", required: false }
+              - { label: "Sq Ft", name: "sqft", widget: "string", required: false }
+              - { label: "MLS Number", name: "mls", widget: "string", required: false }
+              - { label: "Property Type", name: "propertyType", widget: "string", default: "Residential", required: false }
+              - { label: "Main Image", name: "image", widget: "image", required: false }
+              - { label: "Short Description", name: "shortDescription", widget: "text", required: false }
+              - { label: "Full Description", name: "description", widget: "text", required: false }
+              - label: "Features / Highlights"
+                name: "features"
+                widget: "list"
+                required: false
+                field: { label: "Feature", name: "feature", widget: "string" }
+              - { label: "External MLS / Listing Link", name: "externalLink", widget: "string", required: false }
+
+      - name: "reviews"
+        label: "Reviews"
+        file: "data/reviews.json"
+        format: "json"
+        fields:
+          - label: "Reviews"
+            name: "reviews"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.platform}}"
+            fields:
+              - { label: "Client Name", name: "name", widget: "string" }
+              - label: "Platform"
+                name: "platform"
+                widget: "select"
+                options: ["Google", "Zillow", "Facebook", "Website", "Other"]
+              - { label: "Rating", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "Review Quote", name: "quote", widget: "text" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }
+              - { label: "Source Link", name: "link", widget: "string", required: false }
+              - { label: "Feature on Homepage", name: "featured", widget: "boolean", default: true }

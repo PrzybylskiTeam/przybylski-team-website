@@ -28,9 +28,9 @@
 
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="properties.html?status=active">Listings</a>
-        <a href="properties.html?status=pending">Pending</a>
-        <a href="properties.html?status=sold">Sales</a>
+        <a href="current-listings.html">Current Listings</a>
+        <a href="pending.html">Pending</a>
+        <a href="past-sales.html">Past Sales</a>
         <a href="reviews.html">Reviews</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -46,7 +46,7 @@
         </p>
 
         <div class="button-row">
-          <a class="btn btn-gold" href="properties.html?status=active">View Current Listings</a>
+          <a class="btn btn-gold" href="current-listings.html">View Current Listings</a>
           <a class="btn btn-white" href="reviews.html">Read Reviews</a>
           <a class="btn btn-white" href="contact.html">Contact Us</a>
         </div>
@@ -88,35 +88,53 @@
 
   <section class="section navy">
     <div class="section-title">
-      <div class="eyebrow">Featured Activity</div>
-      <h2>Listings, Pendings & Recent Sales</h2>
-      <p>This section pulls from one editable data file, so the homepage can update automatically when you add or remove properties.</p>
+      <div class="eyebrow">Current Activity</div>
+      <h2>Newest Listings & Pendings</h2>
+      <p>The three newest active or pending properties will update automatically when you edit the property data file.</p>
     </div>
 
-    <div class="listings-grid" id="featured-properties"></div>
+    <div class="listings-grid" id="homepage-active-pending"></div>
+    <div class="button-row" style="justify-content: center; margin-top: 26px;">
+      <a class="btn btn-gold" href="current-listings.html">Current Listings</a>
+      <a class="btn btn-white" href="pending.html">Current Pendings</a>
+    </div>
   </section>
 
   <section class="section white">
     <div class="section-title">
-      <div class="eyebrow">Client Reviews</div>
-      <h2>What Clients Are Saying</h2>
-      <p>Review highlights can be pulled from Google, Zillow, Facebook, or direct website submissions once added to the reviews data file.</p>
+      <div class="eyebrow">Past Sales</div>
+      <h2>Recently Sold</h2>
+      <p>The three newest past sales appear here for social proof without needing a dedicated page for every sold home.</p>
     </div>
-    <div class="reviews-list" id="featured-reviews"></div>
+
+    <div class="listings-grid" id="homepage-sales"></div>
     <div class="button-row" style="justify-content: center; margin-top: 26px;">
-      <a class="btn btn-burgundy" href="reviews.html">Read More Reviews</a>
-      <a class="btn btn-gold" href="contact.html">Contact Us</a>
+      <a class="btn btn-burgundy" href="past-sales.html">View Past Sales</a>
     </div>
   </section>
 
   <section class="section navy">
     <div class="section-title">
+      <div class="eyebrow">Client Reviews</div>
+      <h2>What Clients Are Saying</h2>
+      <p>The three newest featured reviews can be shown here from Google, Zillow, Facebook, or direct website testimonials once added to the reviews data file.</p>
+    </div>
+    <div class="reviews-list" id="featured-reviews"></div>
+    <div class="button-row" style="justify-content: center; margin-top: 26px;">
+      <a class="btn btn-gold" href="reviews.html">Read More Reviews</a>
+      <a class="btn btn-white" href="contact.html">Contact Us</a>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="section-title">
       <div class="eyebrow">Thinking About Moving?</div>
       <h2>Let’s Talk Through Your Next Step</h2>
       <p>Whether you are ready now or just starting to think about buying or selling, we can help you understand your options.</p>
+      <div class="response-badge">We typically respond within an hour.</div>
       <div class="button-row" style="justify-content: center; margin-top: 26px;">
         <a class="btn btn-gold" href="tel:8144823344">Call or Text Us</a>
-        <a class="btn btn-white" href="mailto:PrzybylskiTeam@TryAgresti.com">Email Us</a>
+        <a class="btn btn-burgundy" href="mailto:PrzybylskiTeam@TryAgresti.com">Email Us</a>
       </div>
     </div>
   </section>
@@ -131,8 +149,21 @@
   </footer>
   <script src="assets/js/app.js"></script>
   <script>
-    renderFeaturedProperties();
+    renderHomepageActivity();
     renderFeaturedReviews();
+  </script>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>
