@@ -1,0 +1,29 @@
+[
+  {
+    "platform": "Google",
+    "name": "Client Name",
+    "rating": 5,
+    "date": "2026",
+    "quote": "[Paste a short approved review excerpt here.]",
+    "link": "PASTE_GOOGLE_REVIEW_LINK_HERE",
+    "featured": true
+  },
+  {
+    "platform": "Zillow",
+    "name": "Client Name",
+    "rating": 5,
+    "date": "2026",
+    "quote": "[Paste a short approved Zillow review excerpt here.]",
+    "link": "PASTE_ZILLOW_REVIEW_LINK_HERE",
+    "featured": true
+  },
+  {
+    "platform": "Website",
+    "name": "Client Name",
+    "rating": 5,
+    "date": "2026",
+    "quote": "[Paste a website-submitted testimonial here after getting permission to publish it.]",
+    "link": "",
+    "featured": false
+  }
+]
