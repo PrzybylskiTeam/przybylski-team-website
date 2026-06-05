@@ -1,0 +1,69 @@
+[
+  {
+    "id": "sample-active-listing",
+    "status": "active",
+    "address": "[PROPERTY ADDRESS]",
+    "city": "Erie, PA",
+    "price": "$[PRICE]",
+    "beds": "[BEDS]",
+    "baths": "[BATHS]",
+    "sqft": "[SQ FT]",
+    "mls": "[MLS NUMBER]",
+    "propertyType": "Single Family Home",
+    "image": "images/listing-placeholder.jpg",
+    "shortDescription": "[Short listing description goes here. Keep this to 2-4 sentences for the preview card.]",
+    "description": "[Full listing description goes here. Add the strongest selling points, updates, layout notes, neighborhood/location benefits, and any showing instructions you want visitors to know.]",
+    "features": [
+      "Feature one",
+      "Feature two",
+      "Feature three",
+      "Feature four"
+    ],
+    "externalLink": "PASTE_LISTING_LINK_HERE",
+    "featured": true
+  },
+  {
+    "id": "sample-pending-property",
+    "status": "pending",
+    "address": "[PENDING PROPERTY ADDRESS]",
+    "city": "Erie, PA",
+    "price": "$[LIST PRICE]",
+    "beds": "[BEDS]",
+    "baths": "[BATHS]",
+    "sqft": "[SQ FT]",
+    "mls": "[MLS NUMBER]",
+    "propertyType": "Residential",
+    "image": "images/listing-placeholder.jpg",
+    "shortDescription": "This property is currently under contract. If you are thinking about selling a similar property, we would be happy to help you understand your options.",
+    "description": "This property is currently pending. Use this detail page to showcase market activity and invite similar homeowners to ask about their home value.",
+    "features": [
+      "Pending sale",
+      "Local market activity",
+      "Seller representation"
+    ],
+    "externalLink": "",
+    "featured": true
+  },
+  {
+    "id": "sample-sold-property",
+    "status": "sold",
+    "address": "[SOLD PROPERTY ADDRESS]",
+    "city": "Erie, PA",
+    "price": "$[SOLD PRICE]",
+    "beds": "[BEDS]",
+    "baths": "[BATHS]",
+    "sqft": "[SQ FT]",
+    "mls": "[MLS NUMBER]",
+    "propertyType": "Residential",
+    "image": "images/listing-placeholder.jpg",
+    "shortDescription": "This property has sold. If you are considering selling, we can help you understand how your property compares to recent activity in the local market.",
+    "description": "This property has sold. Previous sales do not need a dedicated property page, but they can still appear on the sales page for social proof and market activity.",
+    "features": [
+      "Sold property",
+      "Comparable market activity",
+      "Home value conversation"
+    ],
+    "externalLink": "",
+    "featured": true
+  }
+]
