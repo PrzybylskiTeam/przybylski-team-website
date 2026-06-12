@@ -71,12 +71,26 @@ collections:
               - { label: "Utilities", name: "utilities", widget: "string", required: false }
               - { label: "Gross Rent", name: "grossRent", widget: "string", required: false }
               - { label: "Use Type", name: "useType", widget: "string", required: false, hint: "Useful for commercial or investment properties." }
+              - { label: "Year Built", name: "yearBuilt", widget: "string", required: false }
+              - { label: "Garage", name: "garage", widget: "string", required: false }
+              - { label: "Parking", name: "parking", widget: "string", required: false }
+              - { label: "Taxes", name: "taxes", widget: "string", required: false }
+              - { label: "School District", name: "schoolDistrict", widget: "string", required: false }
+              - { label: "County", name: "county", widget: "string", required: false }
+              - { label: "Area / Neighborhood", name: "area", widget: "string", required: false }
+              - { label: "Water", name: "water", widget: "string", required: false }
+              - { label: "Sewer", name: "sewer", widget: "string", required: false }
+              - { label: "Electric", name: "electric", widget: "string", required: false }
+              - { label: "Gas", name: "gas", widget: "string", required: false }
+              - { label: "Road Access", name: "roadAccess", widget: "string", required: false }
+              - { label: "Directions", name: "directions", widget: "text", required: false }
               - { label: "MLS Number", name: "mls", widget: "string", required: false }
               - { label: "Main Image", name: "image", widget: "image", required: false }
               - label: "Gallery Photos"
                 name: "gallery"
                 widget: "list"
                 required: false
+                hint: "Add as many photos as you want. The property page will make a click-through gallery automatically."
                 field: { label: "Photo", name: "photo", widget: "image" }
               - label: "Listing Tags"
                 name: "tags"
