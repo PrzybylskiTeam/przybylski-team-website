@@ -791,3 +791,432 @@
       opacity: 0.45;
       cursor: not-allowed;
     }
+
+/* ===== Enhanced property templates ===== */
+.premium-listing-card {
+  position: relative;
+  transform: translateY(0);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.premium-listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(20, 28, 66, 0.14);
+}
+
+.premium-listing-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-listing-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,28,66,0.05), rgba(20,28,66,0.58));
+  pointer-events: none;
+}
+
+.listing-status-overlay {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 2;
+  display: inline-flex;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 900;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+.listing-status-overlay.pending { background: var(--burgundy); color: var(--white); }
+.listing-status-overlay.sold { background: var(--navy); color: var(--white); }
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: var(--soft);
+  color: var(--navy);
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid var(--border);
+}
+
+.gold-chip {
+  background: rgba(242, 195, 25, .18);
+  color: var(--navy-dark);
+  border-color: rgba(242, 195, 25, .55);
+}
+
+.mini-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+.mini-facts span {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mini-facts strong {
+  display: block;
+  color: var(--navy-dark);
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.property-layout {
+  max-width: 1280px;
+}
+
+.property-detail-shell {
+  width: 100%;
+}
+
+.property-hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: clamp(28px, 5vw, 52px);
+  color: var(--white);
+  background:
+    radial-gradient(circle at 88% 20%, rgba(242,195,25,.22), transparent 28%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 58%, var(--burgundy-dark) 100%);
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+
+.property-hero-card::before {
+  content: "PRZYBYLSKI TEAM";
+  position: absolute;
+  right: -50px;
+  bottom: -30px;
+  font-size: clamp(50px, 10vw, 150px);
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: rgba(255,255,255,.045);
+  transform: rotate(-8deg);
+  white-space: nowrap;
+}
+
+.property-hero-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.large-tags .status,
+.large-tags .type-chip {
+  margin-bottom: 0;
+}
+
+.property-hero-card h2 {
+  font-size: clamp(36px, 5.2vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -1.6px;
+  margin: 16px 0 10px;
+  max-width: 920px;
+}
+
+.property-price-line {
+  color: var(--gold);
+  font-weight: 900;
+  font-size: clamp(25px, 3vw, 42px);
+}
+
+.property-location-line {
+  color: rgba(255,255,255,.82);
+  margin: 4px 0 22px;
+  font-weight: 800;
+}
+
+.elevated-facts {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: 1050px;
+  margin-bottom: 0;
+}
+
+.elevated-facts .fact {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+  color: rgba(255,255,255,.82);
+}
+
+.elevated-facts .fact strong {
+  color: var(--white);
+  font-size: 20px;
+}
+
+.elevated-facts .fact span {
+  color: rgba(255,255,255,.72);
+  font-weight: 800;
+}
+
+.property-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(310px, .55fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.property-left-column {
+  display: grid;
+  gap: 20px;
+}
+
+.detail-panel,
+.sidebar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 26px;
+  box-shadow: 0 12px 30px rgba(20, 28, 66, 0.08);
+}
+
+.gallery-panel {
+  padding: 14px;
+}
+
+.property-hero-photo,
+.property-gallery-grid img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+.property-gallery-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr .8fr;
+  grid-template-rows: 190px 190px;
+  gap: 10px;
+}
+
+.property-gallery-grid .gallery-main {
+  grid-row: 1 / span 2;
+  min-height: 390px;
+}
+
+.detail-panel h3,
+.sidebar-card h3 {
+  margin-top: 0;
+  color: var(--navy-dark);
+  font-size: 24px;
+}
+
+.description-panel p {
+  font-size: 17px;
+  color: var(--text);
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.highlight-pill {
+  border-left: 5px solid var(--gold);
+  background: var(--soft);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 800;
+  color: var(--navy-dark);
+}
+
+.property-sidebar {
+  display: grid;
+  gap: 18px;
+  position: sticky;
+  top: 16px;
+}
+
+.contact-sidebar-card {
+  border-top: 7px solid var(--gold);
+}
+
+.sidebar-buttons .btn {
+  width: 100%;
+}
+
+.qr-card {
+  text-align: center;
+}
+
+.qr-card img {
+  width: 210px;
+  max-width: 100%;
+  padding: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(20, 28, 66, .08);
+}
+
+.qr-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.small-detail-card {
+  display: grid;
+  gap: 12px;
+}
+
+.print-flyer-panel {
+  border-left: 7px solid var(--burgundy);
+}
+
+.missing-image {
+  background:
+    linear-gradient(135deg, rgba(31,43,92,0.76), rgba(122,31,43,0.58)),
+    repeating-linear-gradient(45deg, #e7ecf6, #e7ecf6 10px, #d9e1ee 10px, #d9e1ee 20px);
+  color: var(--white);
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 1020px) {
+  .property-detail-grid,
+  .elevated-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .property-sidebar {
+    position: static;
+  }
+
+  .property-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .property-gallery-grid .gallery-main {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .mini-facts,
+  .highlight-grid,
+  .property-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .property-hero-card {
+    border-radius: 22px;
+  }
+
+  .property-gallery-grid .gallery-main,
+  .property-gallery-grid img,
+  .property-hero-photo {
+    min-height: 260px;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .top-bar,
+  nav,
+  .page-hero,
+  footer,
+  .property-sidebar .small-detail-card,
+  .print-flyer-panel,
+  .btn,
+  .nav-links {
+    display: none !important;
+  }
+
+  header {
+    background: white !important;
+  }
+
+  .section {
+    padding: 0;
+  }
+
+  .property-detail-grid {
+    grid-template-columns: 1.2fr .8fr;
+  }
+
+  .property-hero-card,
+  .detail-panel,
+  .sidebar-card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .property-hero-card {
+    color: var(--navy-dark);
+    background: white;
+    border: 3px solid var(--navy);
+  }
+
+  .property-price-line {
+    color: var(--burgundy);
+  }
+
+  .property-location-line,
+  .elevated-facts .fact span,
+  .elevated-facts .fact strong {
+    color: var(--navy-dark);
+  }
+
+  .elevated-facts .fact {
+    background: var(--soft);
+    border: 1px solid var(--border);
+  }
+}
+
+.sold-meta {
+  display: grid;
+  gap: 7px;
+  margin: 12px 0 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(122,31,43,0.08), rgba(242,195,25,0.14));
+  border: 1px solid rgba(122,31,43,0.14);
+  color: var(--navy-dark);
+  font-size: 13px;
+}
+
+.sold-meta span {
+  display: block;
+}
+
+.sold-meta strong {
+  color: var(--burgundy);
+}
+
+.sold-meta p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
