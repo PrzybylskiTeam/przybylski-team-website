@@ -19,7 +19,7 @@ collections:
             widget: "list"
             summary: "{{fields.status}} — {{fields.address}}"
             fields:
-              - { label: "Property ID", name: "id", widget: "string", hint: "Use lowercase words with dashes, like 123-main-st-erie-pa. This creates the property detail URL." }
+              - { label: "Property ID", name: "id", widget: "string", hint: "Use lowercase words with dashes, like 6946-w-lake-rd-erie-pa. This creates the property URL." }
               - label: "Status"
                 name: "status"
                 widget: "select"
@@ -27,16 +27,63 @@ collections:
                   - { label: "Active", value: "active" }
                   - { label: "Pending", value: "pending" }
                   - { label: "Sold", value: "sold" }
+              - label: "Property Category"
+                name: "propertyCategory"
+                widget: "select"
+                default: "residential"
+                hint: "Controls which facts show. Vacant land will not show beds/baths. Investment can show units."
+                options:
+                  - { label: "Residential", value: "residential" }
+                  - { label: "Vacant Land / Lot", value: "vacant_land" }
+                  - { label: "Multi-Family", value: "multifamily" }
+                  - { label: "Investment", value: "investment" }
+                  - { label: "Commercial", value: "commercial" }
+                  - { label: "Mobile / Manufactured", value: "mobile_manufactured" }
+                  - { label: "Condo / Townhome", value: "condo" }
+                  - { label: "Other", value: "other" }
+              - { label: "Custom Type Label", name: "propertyType", widget: "string", required: false, hint: "Examples: Vacant Lot, Single Family, Duplex, Mixed Use, Mobile Home on Land." }
               - { label: "Sort Date", name: "sortDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", hint: "Newest dates show first on pages/homepage." }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "City / Area", name: "city", widget: "string", default: "Erie, PA" }
-              - { label: "Price / List Price / Sold Price", name: "price", widget: "string", required: false }
+              - { label: "Price / Current Display Price", name: "price", widget: "string", required: false, hint: "For active/pending use list price. For sold, you can use sold price or leave blank and use the sold fields below." }
+              - { label: "Original/List Price", name: "listPrice", widget: "string", required: false, hint: "Helpful for sold records if you want to show the list price separately." }
+              - { label: "Sold Price", name: "soldPrice", widget: "string", required: false, hint: "For past sales." }
+              - { label: "Sold Date", name: "soldDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }
+              - label: "Represented Side"
+                name: "representedSide"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Seller", value: "Seller" }
+                  - { label: "Buyer", value: "Buyer" }
+                  - { label: "Buyer & Seller", value: "Buyer & Seller" }
+                  - { label: "Assisted", value: "Assisted" }
+              - { label: "Assisting / Co-Agent", name: "assistingAgent", widget: "string", required: false, hint: "Use for co-list agent, assisting agent, team member, referral partner, etc." }
+              - { label: "Sale Notes", name: "saleNotes", widget: "text", required: false, hint: "Optional short note for past sales, such as helped the seller, assisted buyer, multiple offers, etc." }
               - { label: "Beds", name: "beds", widget: "string", required: false }
               - { label: "Baths", name: "baths", widget: "string", required: false }
+              - { label: "Units", name: "units", widget: "string", required: false, hint: "Useful for duplex, multi-family, or investment properties." }
               - { label: "Sq Ft", name: "sqft", widget: "string", required: false }
+              - { label: "Acres", name: "acres", widget: "string", required: false }
+              - { label: "Lot Size", name: "lotSize", widget: "string", required: false }
+              - { label: "Zoning", name: "zoning", widget: "string", required: false }
+              - { label: "Frontage", name: "frontage", widget: "string", required: false }
+              - { label: "Utilities", name: "utilities", widget: "string", required: false }
+              - { label: "Gross Rent", name: "grossRent", widget: "string", required: false }
+              - { label: "Use Type", name: "useType", widget: "string", required: false, hint: "Useful for commercial or investment properties." }
               - { label: "MLS Number", name: "mls", widget: "string", required: false }
-              - { label: "Property Type", name: "propertyType", widget: "string", default: "Residential", required: false }
               - { label: "Main Image", name: "image", widget: "image", required: false }
+              - label: "Gallery Photos"
+                name: "gallery"
+                widget: "list"
+                required: false
+                field: { label: "Photo", name: "photo", widget: "image" }
+              - label: "Listing Tags"
+                name: "tags"
+                widget: "list"
+                required: false
+                hint: "Small labels such as Acreage, Buildable Lot, Lake Area, Investor Friendly."
+                field: { label: "Tag", name: "tag", widget: "string" }
               - { label: "Short Description", name: "shortDescription", widget: "text", required: false }
               - { label: "Full Description", name: "description", widget: "text", required: false }
               - label: "Features / Highlights"
