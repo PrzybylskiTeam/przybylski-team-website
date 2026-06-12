@@ -334,27 +334,166 @@ async function renderPropertiesPage() {
   applyFilter(initial, getCurrentPage());
 }
 
-function renderGallery(property) {
-  const gallery = Array.isArray(property.gallery) ? property.gallery.filter(Boolean) : [];
-  const images = [property.image, ...gallery].filter(Boolean).slice(0, 8);
-  if (!images.length) return `<img class="property-hero-photo" src="images/listing-placeholder.jpg" alt="Property photo" />`;
-  if (images.length === 1) return `<img class="property-hero-photo" src="${images[0]}" alt="${safe(property.address, "Property photo")}" />`;
+function normalizeGalleryItem(item) {
+  if (!item) return "";
+  if (typeof item === "string") return item;
+  return item.photo || item.image || item.url || "";
+}
+
+function getPropertyImages(property) {
+  const gallery = Array.isArray(property.gallery) ? property.gallery.map(normalizeGalleryItem).filter(Boolean) : [];
+  return [property.image, ...gallery].map(normalizeGalleryItem).filter(Boolean);
+}
+
+function renderPhotoViewer(property) {
+  const images = getPropertyImages(property);
+  const alt = safe(property.address, "Property photo");
+  if (!images.length) {
+    return `
+      <div class="property-photo-viewer empty-photo-viewer">
+        <img class="viewer-main-image" src="images/listing-placeholder.jpg" alt="${alt}" />
+      </div>
+    `;
+  }
 
   return `
-    <div class="property-gallery-grid">
-      <img class="gallery-main" src="${images[0]}" alt="${safe(property.address, "Property photo")}" />
-      ${images.slice(1, 5).map(img => `<img src="${img}" alt="${safe(property.address, "Property photo")}" />`).join("")}
+    <div class="property-photo-viewer" data-photo-viewer>
+      <div class="viewer-main-wrap">
+        <button class="viewer-arrow viewer-prev" type="button" aria-label="Previous photo">‹</button>
+        <img class="viewer-main-image" src="${images[0]}" alt="${alt}" data-main-photo />
+        <button class="viewer-arrow viewer-next" type="button" aria-label="Next photo">›</button>
+        <div class="viewer-count"><span data-current-photo>1</span> / ${images.length}</div>
+      </div>
+      ${images.length > 1 ? `
+        <div class="viewer-thumbs" aria-label="Property photo thumbnails">
+          ${images.map((img, index) => `
+            <button type="button" class="viewer-thumb ${index === 0 ? "active" : ""}" data-photo-index="${index}" aria-label="View photo ${index + 1}">
+              <img src="${img}" alt="${alt} thumbnail ${index + 1}" />
+            </button>
+          `).join("")}
+        </div>
+      ` : ""}
     </div>
   `;
+}
+
+function setupPhotoViewer(property) {
+  const viewer = document.querySelector("[data-photo-viewer]");
+  if (!viewer) return;
+  const images = getPropertyImages(property);
+  if (!images.length) return;
+  const main = viewer.querySelector("[data-main-photo]");
+  const count = viewer.querySelector("[data-current-photo]");
+  const thumbs = Array.from(viewer.querySelectorAll("[data-photo-index]"));
+  let activeIndex = 0;
+
+  const setPhoto = (index) => {
+    activeIndex = (index + images.length) % images.length;
+    if (main) main.src = images[activeIndex];
+    if (count) count.textContent = String(activeIndex + 1);
+    thumbs.forEach(btn => btn.classList.toggle("active", Number(btn.dataset.photoIndex) === activeIndex));
+  };
+
+  viewer.querySelector(".viewer-prev")?.addEventListener("click", () => setPhoto(activeIndex - 1));
+  viewer.querySelector(".viewer-next")?.addEventListener("click", () => setPhoto(activeIndex + 1));
+  thumbs.forEach(btn => btn.addEventListener("click", () => setPhoto(Number(btn.dataset.photoIndex))));
+}
+
+function renderGallery(property) {
+  return renderPhotoViewer(property);
 }
 
 function renderDetailFacts(property) {
   const facts = getDisplayFacts(property);
   return facts.length ? `
-    <div class="property-facts elevated-facts">
+    <div class="property-facts elevated-facts compact-facts">
       ${facts.map(fact => `<div class="fact"><strong>${fact.value}</strong><span>${fact.label}</span></div>`).join("")}
     </div>
   ` : "";
+}
+
+function getAdditionalDetails(property) {
+  const category = property.propertyCategory || "residential";
+  const groups = [];
+  const publicDetails = [];
+  const add = (arr, label, value) => { if (hasValue(value)) arr.push({ label, value }); };
+
+  if (category === "vacant_land") {
+    add(publicDetails, "Acres", property.acres);
+    add(publicDetails, "Lot Size", property.lotSize);
+    add(publicDetails, "Zoning", property.zoning);
+    add(publicDetails, "Road Frontage", property.frontage);
+    add(publicDetails, "Road Access", property.roadAccess);
+    add(publicDetails, "Water", property.water);
+    add(publicDetails, "Sewer", property.sewer);
+    add(publicDetails, "Electric", property.electric);
+    add(publicDetails, "Gas", property.gas);
+    add(publicDetails, "Utilities", property.utilities);
+    add(publicDetails, "Taxes", property.taxes);
+    add(publicDetails, "School District", property.schoolDistrict);
+    add(publicDetails, "MLS #", property.mls);
+  } else if (category === "multifamily" || category === "investment") {
+    add(publicDetails, "Units", property.units);
+    add(publicDetails, "Beds", property.beds);
+    add(publicDetails, "Baths", property.baths);
+    add(publicDetails, "Sq Ft", property.sqft);
+    add(publicDetails, "Year Built", property.yearBuilt);
+    add(publicDetails, "Lot Size", property.lotSize || property.acres);
+    add(publicDetails, "Garage / Parking", property.garage || property.parking);
+    add(publicDetails, "Gross Rent", property.grossRent);
+    add(publicDetails, "Taxes", property.taxes);
+    add(publicDetails, "School District", property.schoolDistrict);
+    add(publicDetails, "MLS #", property.mls);
+  } else if (category === "commercial") {
+    add(publicDetails, "Building Sq Ft", property.sqft);
+    add(publicDetails, "Acres", property.acres || property.lotSize);
+    add(publicDetails, "Zoning", property.zoning);
+    add(publicDetails, "Use Type", property.useType || property.propertyType);
+    add(publicDetails, "Parking", property.parking);
+    add(publicDetails, "Utilities", property.utilities);
+    add(publicDetails, "Taxes", property.taxes);
+    add(publicDetails, "MLS #", property.mls);
+  } else {
+    add(publicDetails, "Beds", property.beds);
+    add(publicDetails, "Baths", property.baths);
+    add(publicDetails, "Sq Ft", property.sqft);
+    add(publicDetails, "Year Built", property.yearBuilt);
+    add(publicDetails, "Lot Size", property.lotSize || property.acres);
+    add(publicDetails, "Garage", property.garage);
+    add(publicDetails, "Taxes", property.taxes);
+    add(publicDetails, "School District", property.schoolDistrict);
+    add(publicDetails, "MLS #", property.mls);
+  }
+
+  if (publicDetails.length) groups.push({ title: `${typeLabel(property)} Details`, items: publicDetails });
+
+  const locationDetails = [];
+  add(locationDetails, "Area", property.area || property.city);
+  add(locationDetails, "County", property.county);
+  add(locationDetails, "Directions", property.directions);
+  if (locationDetails.length) groups.push({ title: "Location & Access", items: locationDetails });
+
+  return groups;
+}
+
+function renderPropertyDetailsPanel(property) {
+  const groups = getAdditionalDetails(property);
+  if (!groups.length) return "";
+  return `
+    <section class="detail-panel details-table-panel">
+      <h3>Property Details</h3>
+      <div class="details-table-groups">
+        ${groups.map(group => `
+          <div class="details-table-group">
+            <h4>${group.title}</h4>
+            <dl class="details-table">
+              ${group.items.map(item => `<div><dt>${item.label}</dt><dd>${item.value}</dd></div>`).join("")}
+            </dl>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderHighlights(property) {
@@ -400,43 +539,43 @@ async function renderPropertyDetail() {
       ? `<a class="btn btn-burgundy" href="${property.externalLink}" target="_blank" rel="noopener">View MLS / Full Listing</a>`
       : "";
     const mapQuery = encodeURIComponent(`${safe(property.address)} ${safe(property.city)}`);
+    const tags = getTagList(property);
 
     detail.innerHTML = `
-      <main class="property-detail-shell">
-        <section class="property-hero-card">
-          <div class="tag-row large-tags">
-            <span class="${statusClass(property.status)}">${STATUS_LABELS[property.status] || property.status}</span>
-            <span class="type-chip gold-chip">${typeLabel(property)}</span>
+      <main class="property-detail-shell wide-property-shell">
+        <section class="property-quick-hero">
+          <div>
+            <div class="tag-row large-tags">
+              ${tags.map((tag, index) => index === 0 ? `<span class="${statusClass(property.status)}">${tag}</span>` : `<span class="type-chip gold-chip">${tag}</span>`).join("")}
+            </div>
+            <h2>${safe(property.address, "Property Address")}</h2>
+            <div class="property-price-line">${displayPrice(property)}</div>
+            <p class="property-location-line">${safe(property.city, "Erie, PA")}</p>
           </div>
-          <h2>${safe(property.address, "Property Address")}</h2>
-          <div class="property-price-line">${displayPrice(property)}</div>
-          <p class="property-location-line">${safe(property.city, "Erie, PA")}</p>
-          ${soldMeta(property)}
-          ${renderDetailFacts(property)}
+          <div class="quick-hero-actions">
+            <button class="btn btn-gold" onclick="window.print()">Print Flyer</button>
+            <a class="btn btn-white" href="contact.html">Ask a Question</a>
+          </div>
         </section>
 
-        <div class="property-detail-grid">
-          <div class="property-left-column">
-            <section class="detail-panel gallery-panel">
-              ${renderGallery(property)}
+        <div class="property-feature-layout">
+          <section class="detail-panel gallery-panel large-gallery-panel">
+            ${renderGallery(property)}
+          </section>
+
+          <aside class="property-info-column">
+            <section class="detail-panel key-info-panel">
+              <div class="tag-row">
+                <span class="${statusClass(property.status)}">${STATUS_LABELS[property.status] || property.status}</span>
+                <span class="type-chip gold-chip">${typeLabel(property)}</span>
+              </div>
+              <h3>${safe(property.address, "Property Address")}</h3>
+              <div class="property-price-line smaller-price">${displayPrice(property)}</div>
+              ${soldMeta(property)}
+              ${renderDetailFacts(property)}
             </section>
 
-            <section class="detail-panel description-panel">
-              <h3>Property Overview</h3>
-              <p>${safe(property.description, property.shortDescription || "Contact the Przybylski Team for details on this property.")}</p>
-            </section>
-
-            ${renderHighlights(property)}
-
-            <section class="detail-panel print-flyer-panel">
-              <h3>Print-friendly flyer</h3>
-              <p>Use this for open houses, showing packets, or sign riders. The QR code points back to this property page.</p>
-              <button class="btn btn-burgundy" onclick="window.print()">Print Property Flyer</button>
-            </section>
-          </div>
-
-          <aside class="property-sidebar premium-sidebar">
-            <div class="sidebar-card contact-sidebar-card">
+            <section class="sidebar-card contact-sidebar-card quick-contact-box">
               <h3>Interested in this property?</h3>
               <p>Call or text the Przybylski Team for details, availability, showing options, or similar homes.</p>
               <div class="response-badge">We typically respond within an hour.</div>
@@ -445,8 +584,22 @@ async function renderPropertyDetail() {
                 <a class="btn btn-burgundy" href="mailto:PrzybylskiTeam@TryAgresti.com?subject=${encodeURIComponent(safe(property.address, "Property inquiry"))}">Email Us</a>
                 ${externalButton}
               </div>
-            </div>
+            </section>
+          </aside>
+        </div>
 
+        <div class="property-content-grid">
+          <div class="property-main-content">
+            <section class="detail-panel description-panel expanded-description-panel">
+              <h3>Property Overview</h3>
+              <p>${safe(property.description, property.shortDescription || "Contact the Przybylski Team for details on this property.")}</p>
+            </section>
+
+            ${renderPropertyDetailsPanel(property)}
+            ${renderHighlights(property)}
+          </div>
+
+          <aside class="property-utility-column">
             <div class="sidebar-card qr-card">
               <h3>Scan for this listing</h3>
               <img src="${qrImage}" alt="QR code for ${safe(property.address, "property page")}" />
@@ -464,6 +617,7 @@ async function renderPropertyDetail() {
         </div>
       </main>
     `;
+    setupPhotoViewer(property);
   } catch (error) {
     detail.innerHTML = `<div class="empty-state">Property data could not be loaded.</div>`;
   }
