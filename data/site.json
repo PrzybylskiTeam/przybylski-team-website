@@ -1,0 +1,30 @@
+{
+  "socialLinks": [
+    {
+      "label": "Zillow profile & reviews",
+      "url": "https://www.zillow.com/profile/AlexisNatePrzybylski",
+      "verified": true
+    },
+    {
+      "label": "Google reviews",
+      "url": "https://maps.app.goo.gl/sVFNAjqcumCKHVKeA",
+      "verified": true
+    }
+  ],
+  "contact": {
+    "team": "Przybylski Team",
+    "people": "Alexis & Nate Przybylski",
+    "brokerage": "Agresti Real Estate",
+    "phone": "814.482.3344",
+    "officePhone": "814.459.9400",
+    "email": "PrzybylskiTeam@TryAgresti.com",
+    "officeAddress": "2635 West 26th Street, Erie, PA 16506"
+  },
+  "integrations": {
+    "listingFeed": "not connected",
+    "reviewFeed": "not connected",
+    "contactDelivery": "email draft only; no server submission",
+    "facebook": "conflicting profile IDs; verify before adding",
+    "cms": "legacy git-gateway not verified"
+  }
+}
