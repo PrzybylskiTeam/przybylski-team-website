@@ -1,44 +1,42 @@
 {
   "reviews": [
     {
-      "platform": "Google",
-      "name": "Client Name",
-      "rating": 5,
-      "date": "2026-06-01",
-      "sortDate": "2026-06-01",
-      "quote": "[Paste a short approved review excerpt here.]",
-      "link": "PASTE_GOOGLE_REVIEW_LINK_HERE",
-      "featured": true
+      "platform": "Zillow",
+      "name": "Nicole Wiemken",
+      "date": "2026-10-27",
+      "sortDate": "2026-10-27",
+      "quote": "I had a wonderful experience working with Nate and Alexis.",
+      "link": "https://www.zillow.com/profile/TRYAGRESTI#reviews",
+      "featured": true,
+      "approved": true,
+      "verifiedAt": "2026-11-13",
+      "excerpt": true,
+      "reuseBasis": "short-attributed-excerpt"
     },
     {
       "platform": "Zillow",
-      "name": "Client Name",
-      "rating": 5,
-      "date": "2026-05-20",
-      "sortDate": "2026-05-20",
-      "quote": "[Paste a short approved Zillow review excerpt here.]",
-      "link": "PASTE_ZILLOW_REVIEW_LINK_HERE",
-      "featured": true
+      "name": "Carlene williams",
+      "date": "2026-09-15",
+      "sortDate": "2026-09-15",
+      "quote": "Alexis and Nate helped us find our home!",
+      "link": "https://www.zillow.com/profile/AlexisNatePrzybylski#reviews",
+      "featured": true,
+      "approved": true,
+      "verifiedAt": "2026-11-13",
+      "excerpt": true,
+      "reuseBasis": "short-attributed-excerpt"
     },
     {
-      "platform": "Website",
-      "name": "Client Name",
+      "platform": "Google",
+      "name": "Shadow Hannold",
       "rating": 5,
-      "date": "2026-05-01",
-      "sortDate": "2026-05-01",
-      "quote": "[Paste a website-submitted testimonial here after getting permission to publish it.]",
-      "link": "",
-      "featured": true
-    },
-    {
-      "platform": "Facebook",
-      "name": "Client Name",
-      "rating": 5,
-      "date": "2026-04-15",
-      "sortDate": "2026-04-15",
-      "quote": "[Paste a short approved Facebook recommendation excerpt here.]",
-      "link": "PASTE_FACEBOOK_REVIEW_LINK_HERE",
-      "featured": false
+      "quote": "Alexis and Nate were wonderful and so helpful when we bought our house.",
+      "link": "https://maps.app.goo.gl/sVFNAjqcumCKHVKeA",
+      "featured": true,
+      "approved": true,
+      "verifiedAt": "2026-11-13",
+      "excerpt": true,
+      "reuseBasis": "short-attributed-excerpt"
     }
   ]
 }
