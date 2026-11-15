@@ -15,14 +15,15 @@
       "verifiedAt": "2026-11-13",
       "published": true,
       "attribution": "Agresti Real Estate · GEMLS",
-      "externalLink": "https://www.zillow.com/homedetails/2423-Cranberry-St-Erie-PA-16502/52580606_zpid/",
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
       "sourceUrl": "https://www.zillow.com/homedetails/2423-Cranberry-St-Erie-PA-16502/52580606_zpid/",
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "sourceNote": "Checked against public Zillow listing and team profile; confirm in MLS before launch.",
       "image": "",
       "gallery": [],
-      "mls": "192243"
+      "mls": "192243",
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     },
     {
       "id": "6946-w-lake-rd",
@@ -38,13 +39,14 @@
       "verifiedAt": "2026-11-13",
       "published": true,
       "attribution": "Agresti Real Estate · GEMLS",
-      "externalLink": "https://www.zillow.com/homedetails/6946-W-Lake-Rd-Fairview-PA-16415/9478441_zpid/",
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
       "sourceUrl": "https://www.zillow.com/homedetails/6946-W-Lake-Rd-Fairview-PA-16415/9478441_zpid/",
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "sourceNote": "Checked against public Zillow listing and team profile; confirm in MLS before launch.",
       "image": "",
-      "gallery": []
+      "gallery": [],
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     },
     {
       "id": "210-andrews-park-blvd",
@@ -62,13 +64,14 @@
       "verifiedAt": "2026-11-13",
       "published": true,
       "attribution": "Agresti Real Estate · GEMLS",
-      "externalLink": "https://www.zillow.com/homedetails/210-Andrews-Park-Blvd-Erie-PA-16511/52140397_zpid/",
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
       "sourceUrl": "https://www.zillow.com/homedetails/210-Andrews-Park-Blvd-Erie-PA-16511/52140397_zpid/",
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "sourceNote": "Checked against public Zillow listing and team profile; confirm in MLS before launch.",
       "image": "",
-      "gallery": []
+      "gallery": [],
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     },
     {
       "id": "2045-water-st",
@@ -84,12 +87,13 @@
       "representedSide": "Buyer",
       "published": true,
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "verifiedAt": "2026-11-13",
       "sortDate": "2026-11-13",
       "attribution": "Buyer representation · Source: Zillow team sales history",
       "sourceUrl": "https://www.zillow.com/profile/AlexisNatePrzybylski",
-      "externalLink": "https://www.zillow.com/profile/AlexisNatePrzybylski"
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     },
     {
       "id": "2663-w-6th-st",
@@ -105,12 +109,13 @@
       "representedSide": "Buyer",
       "published": true,
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "verifiedAt": "2026-11-13",
       "sortDate": "2026-11-13",
       "attribution": "Buyer representation · Source: Zillow team sales history",
       "sourceUrl": "https://www.zillow.com/profile/AlexisNatePrzybylski",
-      "externalLink": "https://www.zillow.com/profile/AlexisNatePrzybylski"
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     },
     {
       "id": "3713-davison-rd",
@@ -126,12 +131,13 @@
       "representedSide": "Buyer",
       "published": true,
       "marketingApproved": true,
-      "photoPermission": false,
+      "photoPermission": true,
       "verifiedAt": "2026-11-13",
       "sortDate": "2026-11-13",
       "attribution": "Buyer representation · Source: Zillow team sales history",
       "sourceUrl": "https://www.zillow.com/profile/AlexisNatePrzybylski",
-      "externalLink": "https://www.zillow.com/profile/AlexisNatePrzybylski"
+      "externalLink": "https://przybylskiteam.tryagresti.com/",
+      "permissionBasis": "Standing authorization from Nathan Przybylski on 2026-11-15 for team listings and sold homes."
     }
   ]
 }

@@ -26,5 +26,10 @@
     "contactDelivery": "email draft only; no server submission",
     "facebook": "conflicting profile IDs; verify before adding",
     "cms": "legacy git-gateway not verified"
+  },
+  "propertyWebsite": "https://przybylskiteam.tryagresti.com/",
+  "contentPolicy": {
+    "ownListingsAndSoldHomes": "Standing permission to display confirmed by Nathan on 2026-11-15.",
+    "propertyDestination": "Use the team Agresti site instead of Zillow for property browsing. Use verified individual property URLs on this domain when available; otherwise link to the supplied search homepage."
   }
 }
