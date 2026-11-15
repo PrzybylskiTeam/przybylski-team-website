@@ -49,3 +49,8 @@ The current DNS already targets GitHub Pages. No DNS change is proposed. Preserv
 Launch needs a deliberate patch to remove `noindex,nofollow` and the preview label, add canonical metadata/sitemap for the approved domain, verify required brokerage/MLS disclosures, and pass the final content review. Do not remove preview indicators while launch is still pending.
 
 After an approved merge, check HTTPS on the apex and www, all pages, actual content JSON and images, mobile menu, outbound profile links and the contact path. Confirm any connected form receipt. Revert the launch merge if necessary; the old baseline is recoverable but currently shows a README, so a rollback restores that known degraded state. Fix forward only with an approved, reviewed change.
+
+
+## November 15 collection and homepage revision
+
+Listings are separate from Sold homes. The listings page defaults to active plus pending and has separate status filters. Sold homes includes all 21 transactions visible in the public team profile carousel, including buyer/seller labels and a search field. Relative dates were not converted into invented closing dates. `saleOrder` preserves the source's ordering. The homepage displays the completed-record count as “Successful closings,” avoiding an unsupported claim about unique families. The number is computed from published, verified sold records. Update those records when additional closings are confirmed; do not count active/pending homes or add agent totals together without deduplicating transactions. No listing photos have been imported in this revision.
